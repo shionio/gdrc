@@ -1,0 +1,274 @@
+
+  .fondo{
+    background-color: #303030;
+  }
+  .btn{
+  
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin:0.3em;
+    text-transform: none;
+  }
+
+  .btn-propio:hover{
+    opacity: 0.9;
+  }
+  .z-depth-1{
+    padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+  .objDragable{
+    -vendor-animation-duration: 1s;
+    -vendor-animation-delay: 1s;
+    -vendor-animation-iteration-count: infinite;
+  }
+  .contenedor-comentarios{
+
+    border-radius: 3px;
+    background-color: #FAFAFA;
+    
+  }
+  .comentario{
+    font-size: 0.9em;
+    padding:0.1em;
+    margin: 0.1em;
+    background-color: #FAFAFA;
+  }
+  .descripcion-tarea{
+    font-size: 0.9em;
+  }
+  .prioridad-tarea{
+    border:1px solid #757575;
+    border-radius: 3px;
+    width: 60px;
+    height: 8px;
+    margin-left: 0.3em;
+    margin-top: 0.3em;
+  }
+  .icono-awesome{
+    font-size: 1.4em;
+  }
+  .icono-awesome:hover{
+    color:black;
+    cursor: pointer;
+  }
+  .icono-tarjeta{
+    position: absolute; 
+    top:0.3em;
+    right: 0.3em;
+  }
+  .icono-tarjeta-footer{
+    float: right;
+    margin-left: 0.1em;
+  }
+  .tarea:hover{
+    background-color: #bdbdbd!important;
+  }
+  .objDragable{
+
+
+    border-radius: 3px;
+    background-color: #fff;
+    padding: 0.5em;
+    margin-bottom:0.5em;
+    font-size: 0.9em;
+    position: relative;
+ 
+    clear: both;
+      font-weight: 400;
+      margin: 0 0 4px;
+      overflow: hidden;
+      word-wrap: break-word;
+      color: #4d4d4d;
+      box-shadow: none;
+  }
+  .nombre_tarea{
+    padding: 0.3em;
+  }
+  .collapsible-body{
+    padding: 0.3em;
+  }
+  .objDragable:hover{
+    cursor: move;     
+  }
+  .invisible{
+    display: none;
+  }
+  .tarea {
+      clear: both;
+      font-weight: 400;
+      margin: 0 0 4px;
+      overflow: hidden;
+      word-wrap: break-word;
+      color: #4d4d4d;
+  }
+  .list-wrapper {
+    position: relative;
+      width: 24%;
+      margin: 5px;
+      padding: 0.3em;
+      height: 100%;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: top;
+      white-space: nowrap;
+  }
+  .nueva_tarea:hover{
+    text-decoration: underline!important;
+    cursor: pointer;
+  }
+  .nueva_tarea a{
+    left: 0;
+    right: 0;
+
+
+  }
+  .input-tarea{
+    border:1px solid #F5F5F5 !important;
+    margin:0.3em;
+    padding: 0.3em;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    width: 100%;
+    font-weight: bold;
+    color:#424242;
+    font-size: 1.1em;
+
+  }
+  .textarea-tarea:focus:{
+
+  }
+  .input-tarea:focus{
+    
+    background-color: #fff;
+    border:1px solid #fff !important;
+    box-shadow: none;
+    padding: 0.3em;
+
+  }
+  b{
+    font-weight: bold;
+    color:#424242;
+  }
+  textarea{
+    padding: 0.3em;
+    color:#424242;
+    border-radius: 3px;
+    border:1px solid #f4f4f4;
+    margin-right: 0px;
+    margin-left: 0px;
+    background: #fff;
+  }
+  .board-canvas {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+  #board {
+      user-select: none;
+      white-space: nowrap;
+      margin-bottom: 10px;
+
+      padding-bottom: 10px;
+      display: block;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+  }
+  .campo_con_errores{
+      border: 1px solid red !important;
+  }
+  .pie-lista{
+    padding: 0.5em; position:absolute; bottom:0;
+  }
+  .header-lista{
+    padding: 0.5em; font-weight: bold;position:absolute; top:0;
+  }
+  .contenido-burbuja{
+    
+    overflow-y: auto !important;
+    overflow-x:hidden;
+  }
+  #info{
+
+    
+    overflow: hidden;
+  }
+
+  .info_burbuja {
+    position: absolute;
+    background-color: white;
+    
+    box-shadow: 1px 3px 20px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    min-height: 45px;
+    padding: 10px;
+  }
+  .info_burbuja .triangulo {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    bottom: -18px;
+    left: 50%;
+    background: url(../imgs/triangulo_burbuja.png) center bottom transparent no-repeat;
+  }
+  .info_burbuja .triangulo-arr {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -18px;
+    left: 50%;
+    background: url(../imgs/triangulo_arriba_burbuja.png) center bottom transparent no-repeat;
+    background-size: auto 20px;
+  }
+  .info_burbuja .triangulo-der {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -18px;
+    bottom: 20px;
+    background: url(../imgs/triangulo_der_burbuja.png) center right transparent no-repeat;
+  }
+  .info_burbuja .triangulo-izq {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: -18px;
+    bottom: 20px;
+    background: url(../imgs/triangulo_izq_burbuja.png) center left transparent no-repeat;
+  }
+  .cerrar-burbuja {
+    position: absolute;
+    top: -3px;
+    right: 3px;
+    line-height: 24px;
+    color: #ccc;
+    margin: 0px !important;
+    padding: 0px !important;
+  } 
+  .sin-margen{
+    margin:0px !important;
+  }
+  .velo-negro{
+    position:fixed; 
+    width:100%; 
+    height:100%;
+    z-index:1000; 
+    overflow:auto;
+    background-color: rgba(30, 44, 44, 0.9);
+  }
+  .modal-propio{
+    padding:0.5em;
+    width:60%; 
+    height:auto;
+    margin-top:50px; 
+    margin-bottom:50px;
+    margin-right:auto;
+    margin-left:auto;
+    position:relative;
+    z-index: 1001;
+  }

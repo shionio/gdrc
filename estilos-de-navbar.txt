@@ -1,0 +1,103 @@
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="#!">one</a></li>
+  <li><a href="#!">two</a></li>
+  <li class="divider"></li>
+  <li><a href="#!">three</a></li>
+</ul>
+<nav>
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Logo</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="sass.html">Sass</a></li>
+      <li><a href="badges.html">Components</a></li>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+$html_navBar = "<div>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li>
+              <div class='user-view'>
+                    <div class='background' style='background-color:  #35060b;'>
+                      <img src='' >
+                    </div>
+                <a href='#!name'><span class='white-text name'>Angel Gutierrez</span></a>
+                <a href='#!email'><span class='white-text email'>angelgutierrez1983@gmail.com</span></a>
+                </div>
+              </li>
+              <li><a href='".site_url()."/documento'><i style='font-size: 25px' class='material-icons'>home</i>Inicio</a></li>
+              
+            <li class='no-padding'>
+                  <ul class='collapsible collapsible-accordion'>
+                      <li>
+                        <a class='collapsible-header'>
+                        Oficina-Reclamos<i class='material-icons'>arrow_drop_down</i></a>
+                        <div class='collapsible-body'>
+                            <ul>
+                              <li><a href='".base_url()."reclamos_controller/listarReclamos'>Nuevo Reclamo</a></li>
+                            </ul>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a class='collapsible-header'>Inventario<i class='material-icons'>arrow_drop_down</i></a>
+                        <div class='collapsible-body'>
+                            <ul>
+                              <li><a href='".base_url()."administracion_controller/listarBienesTecnologicos'>Bienes Tecnologico</a></li>
+
+                              <li><a href='".base_url()."administracion_controller/listarConsumibles'>Consumibles</a></li>
+                            </ul>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a class='collapsible-header'>Movimientos<i class='material-icons'>arrow_drop_down</i></a>
+                        <div class='collapsible-body'>
+                            <ul>
+                              <li><a href='#!'>Solicitud</a></li>
+                              <li><a href='#!'>Asignaciones</a></li>
+                              <li><a href='#!'>Devoluciones</a></li>
+                            </ul>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a class='collapsible-header'>Reportes<i class='material-icons'>arrow_drop_down</i></a>
+                        <div class='collapsible-body'>
+                            <ul>
+                              <li><a href='#!'>Solicitud</a></li>
+                              <li><a href='#!'>Asignaciones</a></li>
+                              <li><a href='#!'>Devoluciones</a></li>
+                            </ul>
+                        </div>
+                      </li>
+
+                      <li>
+                        <a class='collapsible-header'>Estadisticas<i class='material-icons'>arrow_drop_down</i></a>
+                        <div class='collapsible-body'>
+                            <ul>
+                              <li><a href='#!'>Solicitud</a></li>
+                              <li><a href='#!'>Asignaciones</a></li>
+                              <li><a href='#!'>Devoluciones</a></li>
+                            </ul>
+                        </div>
+                      </li>
+                  </ul>
+                </li>
+            </ul>
+          </div>";
+          return $html_navBar;
+      }

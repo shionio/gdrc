@@ -1,0 +1,59 @@
+
+#div-bancos{
+	position: relative;
+	margin:2em;
+	background-color: #ccc;
+	padding: 0.8em;
+	width: 20%;
+}
+.tr-data-bancos {
+	vertical-align: middle !important;
+	font-size: 0.8em;
+}
+.tr-banco {
+	font-size: 1.1em;
+}
+.tr-titulos-bancos {
+	font-size: 0.9em;
+}
+#div-update-banco{
+	margin-top:8em;
+	background-color: white;
+	padding: 0.8em;
+	width: 47%;
+	height: 430px;
+	margin-left: auto;
+	margin-right:auto;
+}
+#div-add-banco{
+	margin-top:8em;
+	background-color: white;
+	padding: 0.8em;
+	width: 47%;
+	height: 320px;
+	margin-left: auto;
+	margin-right:auto;
+}
+#div-select-banco{
+	width: 45%;
+	padding-bottom: 2.0em !important;
+	padding-left: : 2.0em !important;
+}
+#div-money-banco{
+	width: 45%;
+	padding-bottom: 2.0em !important;
+}
+#div-cerrar-cuenta{
+	width: 45%;
+	padding-top: 2.0em !important;
+	padding-right: : 0.5em !important;	
+}
+#div-nota{
+	width: 45%;
+	padding-top: 2.0em !important;
+	padding-right: : 1.0em !important;	
+}
+
+
+
+
