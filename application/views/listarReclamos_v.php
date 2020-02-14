@@ -10,8 +10,8 @@
 	<h1 align="center">Listado de Reclamos</h1>
 	<br><br>
 	<div align="center">
-		<a class="waves-effect brown darken-3 btn" href="registro">Nuevo</a>
-		<input class="waves-effect brown darken-3 btn" type="button" value="Volver">
+		<a class=" light-blue darken-3 btn" href="registro">Nuevo</a>
+		<a class=" light-blue darken-3 btn" href='<?= base_url() ?>Inicio_controller'>Volver</a>
 	</div>
 <br>
 <br>

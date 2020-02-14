@@ -10,16 +10,23 @@ class Reclamos_controller extends CI_Controller{
 	}
 
 	public function index(){
-		//$this->load->view('listarReclamos_v');
-	}
-
-	public function listarReclamos(){
 		$this->load->view('listarReclamos_v');
 	}
 
+	/*public function listarReclamos(){
+		$this->load->view('listarReclamos_v');
+	}*/
+
 	function registro(){
 		$datos = array();
-		$this->load->view('nuevoReclamo_v');
+		$listarBancos = $this->Reclamos_model->listarBancos();
+		
+
+		$datos  = array(
+			'listarBancos' => $listarBancos,
+		);
+
+		$this->load->view('nuevoReclamo_v',$datos);
 	}
 
 

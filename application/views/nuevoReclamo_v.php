@@ -1,3 +1,7 @@
+<?php 
+  //prp($listarBancos);
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +13,8 @@
 <body>
 
 <hr>
- <a class="waves-effect waves-light btn-small"><i class="material-icons left">save</i>Guardar</a>
- <a href="<?=base_url()?>.reclamos_controller/listarReclamos" class="waves-effect waves-light btn-small"><i class="material-icons left">arrow_back</i>Regresar</a>
+ <a class="light-blue darken-3 btn-small"><i class="material-icons left">save</i>Guardar</a>
+ <a href="<?=base_url()?>.reclamos_controller/listarReclamos" class="light-blue darken-3 btn-small"><i class="material-icons left">arrow_back</i>Regresar</a>
 <hr>  
     <div class="row">
       <h4 align="center">Datos del Cliente</h4>
@@ -86,9 +90,12 @@
       <div class="col s6">
         Bancos
          <select>
-            <option value="" disabled selected>Seleccione</option>
-            <option value="1">VENEZUELA</option>            
+          <option value="" disabled selected>Seleccione</option>
+          <?php foreach ($listarBancos as $id => $banco) { ?>
+              <option value="<?= $banco['ID_BANCO'] ?>"> <?= $banco['nombre_banco']; ?></option>
+          <?php } ?>          
           </select>  
+
       </div>
     
       <div class="col s6">
