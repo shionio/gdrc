@@ -17,7 +17,35 @@ class Reclamos_model extends CI_Model{
    	$resultado = $rs->result_array();
 
    	return $resultado;
-
-
    }
+
+   function buscarPersona($parametros){      
+      extract($parametros);
+
+      $this->db->select('nombre, apellido');
+      $this->db->from($tabla);
+      $this->db->where($condicion);
+
+      $rs = $this->db->get();
+
+      $result = $rs->row_array();
+
+      //prp($result);
+
+      return $result;
+   }
+
+   function buscarCuenta($cedula){
+      $this->db->select('numero_cuenta');
+      $this->db->from('t_cuenta');
+      $this->db->where('cedula', $cedula);
+
+      $result = $this->db->get();
+
+      $rs = $result->result_array();
+
+      return $rs;
+   }
+
+
 }

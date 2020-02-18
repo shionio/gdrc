@@ -62,11 +62,11 @@
       <div class="col s6">
         <div class="col s4">
           N° Identidad
-          <input type="text" name="cedula">
+          <input type="text" name="cedula" id="cedula" onblur="buscarCliente()">
         </div>
         <div class="col s8">
           Apellidos y Nombres
-          <input type="text" name="nombreApellido">
+          <input type="text" id="nombre" name="nombreApellido" >
         </div>
 
         <div class="col s5">
@@ -180,6 +180,32 @@
       });     
 
     })
+
+    function buscarCliente(){
+      var cedula = $('#cedula').val()
+      var url = "<?=site_url()?>/reclamos_controller/buscarPersona"
+      //console.log(url)
+      
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: url,
+        data: {
+          cedula : cedula
+        },
+      success: function (data) {
+        console.log(data)
+        $('#nombre').val(data.nombre+' '+data.apellido)
+
+      },
+      error: function(){
+        console.log('fallo')
+
+      }
+    })
+
+
+    }
   </script>
 </body>
 </html>
