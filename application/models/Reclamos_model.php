@@ -30,15 +30,16 @@ class Reclamos_model extends CI_Model{
 
       $result = $rs->row_array();
 
-      //prp($result);
-
       return $result;
    }
 
-   function buscarCuenta($cedula){
+   function buscarCuenta($parametros){
+      //prp($parametros);
+      extract($parametros);
+      
       $this->db->select('numero_cuenta');
-      $this->db->from('t_cuenta');
-      $this->db->where('cedula', $cedula);
+      $this->db->from($tabla);
+      $this->db->where($condicion);
 
       $result = $this->db->get();
 

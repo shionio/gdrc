@@ -49,7 +49,20 @@ class Reclamos_controller extends CI_Controller{
 
 		$respuesta = $this->Reclamos_model->buscarPersona($parametros);
 		echo json_encode($respuesta);
+	}
+
+	public function buscarCuentas($cedula){
+		$cedula = $cedula;
+		$lenguaje = "json";
+
+		$parametros = array(
+			'tabla' => 't_cuenta',
+			'condicion' => array('cedula' => $cedula)
+		);
+		$cuentas = $this->Reclamos_model->buscarCuenta($parametros);
 		
+		echo json_encode($cuentas);
+
 	}
 
 

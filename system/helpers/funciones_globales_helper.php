@@ -10,16 +10,14 @@
 
 						<link type='text/css' rel='stylesheet' href='".base_url()."css/material-icons/css/materialicons.css'/>
 						<link type='text/css' rel='stylesheet' href='".base_url()."libs/materialize/css/materialize.min.css'/>
-						<link rel='stylesheet' type='text/css' href='".base_url()."libs/jq-datatable/datatables.min.css'/>
 						<script type='text/javascript' src='".base_url()."libs/jquery/jquery-3.2.1.min.js'></script>
 					    <script type='text/javascript' src='".base_url()."libs/materialize/js/materialize.min.js'></script>
+						
 
 
 					    <link type='text/css' rel='stylesheet' href='".base_url()."libs/sweetalert.css'/>
 						<script src='".base_url()."libs/sweetalert.min.js'</script>
-
-
-					    <script src='".base_url()."libs/jq-datatable/datatables.min.js'></script>
+					  
 						<script src='".base_url()."libs/jq-datatable/js/dataTables.semanticui.min.js'></script>
 						<img class='center-align' src='imgs/banner.png' width='100%' height='70px' >
 						<script type='text/javascript'>

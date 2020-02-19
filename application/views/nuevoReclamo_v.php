@@ -69,9 +69,13 @@
           <input type="text" id="nombre" name="nombreApellido" >
         </div>
 
-        <div class="col s5">
+        <div class="col s5" id="divCuentas">
           Cuenta Bancaria
-          <input type="text" name="cuenta">
+          <div>
+            <select name="" id="cuentas">
+              <option value="" selected>Seleccione Una Cuenta</option>
+            </select>
+          </div>
         </div>
 
         <div class="col s7">
@@ -177,7 +181,11 @@
                   return value.replace(/\D/g, "").replace(/([0-9])([0-9]{2})$/, '$1,$2').replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
               });
           }
-      });     
+      });
+
+      $('#cuentas').on('click', function(){
+        alert(':D')
+      })    
 
     })
 
@@ -192,20 +200,68 @@
         url: url,
         data: {
           cedula : cedula
-        },
-      success: function (data) {
-        console.log(data)
-        $('#nombre').val(data.nombre+' '+data.apellido)
-
-      },
-      error: function(){
-        console.log('fallo')
-
-      }
-    })
-
-
+        },success: function (data) {
+          if (data != ''){
+            //console.log(data)
+            $('#nombre').val(data.nombre+' '+data.apellido)
+          }else{
+            console.log('fallo')
+          }
+        }
+      })
+      buscarCuentas(cedula)
     }
+
+    function buscarCuentas(cedula){
+      var url = "<?=site_url()?>/reclamos_controller/buscarCuentas/"+cedula      
+      $.ajax({
+          type: "post",
+          dataType: "json",
+          url: url,
+          data: {cedula: cedula},
+          success: function (cuenta){
+            if(cuenta != ''){
+               let select = $('#cuentas')
+                //select.html('')
+                let obj = cuenta
+
+                obj.forEach((elemento, indice) => {
+                  console.log(elemento)
+                  
+                    select.append(`
+                        <option value="${elemento.numero_cuenta}">${elemento.numero_cuenta}</option>
+                    `)
+                });
+                 $('select').formSelect();
+            }else{
+              alert('Cedula no Registrada')
+            }
+          }
+      })
+    }
+   
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
