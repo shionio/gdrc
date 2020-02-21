@@ -14,20 +14,23 @@
 
 <hr>
  <a class="light-blue darken-3 btn-small"><i class="material-icons left">save</i>Guardar</a>
- <a href="<?=base_url()?>.reclamos_controller/listarReclamos" class="light-blue darken-3 btn-small"><i class="material-icons left">arrow_back</i>Regresar</a>
-<hr>  
+ <a href="<?=base_url()?>reclamos_controller/index" class="light-blue darken-3 btn-small"><i class="material-icons left">arrow_back</i>Regresar</a>
+<hr>
+  <form action="<?= base_url() ?>reclamos_controller/guardar">
+    
+    
     <div class="row">
       <h4 align="center">Datos del Cliente</h4>
       <!-- primer cuadro inicio -->
       <div class="col s3">
         <div class="col">         
             N° Reclamo
-            <input type="text" name="num_reclamo">         
+            <input type="text" name="num_reclamo" readonly="true">
         </div>
 
         <div class="col s11">         
             Fecha
-            <input type="text" class="datepicker" name="num_reclamo" value="<?= date('d-m-Y') ?>" disabled>         
+            <input type="text" class="datepicker" name="num_reclamo" value="<?= date('d-m-Y') ?>" readonly="true">         
         </div>
       </div>
       <!-- primer cuadro fin  -->
@@ -66,7 +69,7 @@
         </div>
         <div class="col s8">
           Apellidos y Nombres
-          <input type="text" id="nombre" name="nombreApellido" >
+          <input type="text" id="nombre" name="nombreApellido" readonly="true" >
         </div>
 
         <div class="col s5" id="divCuentas">
@@ -164,6 +167,7 @@
       </div>
 
     </div>
+  </form>
 
 
 

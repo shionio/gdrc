@@ -4,14 +4,7 @@
 		<?=cargar_headers()?>
 		<?=mostrar_nav_bar()?>	
 		<meta charset='utf-8'>
-		<style type="text/css">
-			body{
-				/*margin-left: 304px; 
-			}
-			.waves-effect{
-				margin-left: 10px;
-			*/}
-		</style>
+		<style type="text/css"></style>
 	</head>
 <body>
 	<div class="container">

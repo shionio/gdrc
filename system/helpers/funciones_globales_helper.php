@@ -102,8 +102,7 @@
 			}
 		}
 
-		if( ! function_exists('prp'))
-		{
+		if( ! function_exists('prp')){
 			function prp($arg=array())
 			{
 				echo "\n<pre>\n";
@@ -118,5 +117,5 @@
 				}
 				echo "</pre>\n";
 			}
-}
+		}
     ?>
