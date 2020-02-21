@@ -72,17 +72,16 @@
         <div class="col s5" id="divCuentas">
           Cuenta Bancaria
           <div>
-            <select name="" id="cuentas">
-              <option value="" selected>Seleccione Una Cuenta</option>
+            <select name="" id="cuentas" onchange="buscarTarjeta()">
+              
             </select>
           </div>
         </div>
 
         <div class="col s7">
           Numero de Tarjeta (Cta Cte o Ahorros)
-          <select>
-            <option value="" disabled selected>Seleccione</option>
-            <option value="1">10000055587</option>            
+          <select id="tarjeta">
+            
           </select>          
         </div>
       </div>
@@ -183,9 +182,10 @@
           }
       });
 
-      $('#cuentas').on('click', function(){
-        alert(':D')
-      })    
+      $('#cuentas').on('change', function(){
+        
+      })
+
 
     })
 
@@ -203,7 +203,7 @@
         },success: function (data) {
           if (data != ''){
             //console.log(data)
-            $('#nombre').val(data.nombre+' '+data.apellido)
+            $('#nombre').val(data.apellido+' '+data.nombre)
           }else{
             console.log('fallo')
           }
@@ -220,23 +220,49 @@
           url: url,
           data: {cedula: cedula},
           success: function (cuenta){
+            //console.log(cuenta)
             if(cuenta != ''){
                let select = $('#cuentas')
                 //select.html('')
                 let obj = cuenta
 
                 obj.forEach((elemento, indice) => {
-                  console.log(elemento)
-                  
+                  //console.log(elemento)                  
                     select.append(`
-                        <option value="${elemento.numero_cuenta}">${elemento.numero_cuenta}</option>
+                        <option value="${elemento.ID_CUENTA}">${elemento.numero_cuenta}</option>
                     `)
                 });
                  $('select').formSelect();
             }else{
-              alert('Cedula no Registrada')
+              alert('No Hay Cuenta Registrada para la Cedula '+cedula)
             }
           }
+      })
+    }
+
+    function buscarTarjeta(){
+      var id_cuenta = $('#cuentas').val()
+      var url = "<?=site_url()?>/reclamos_controller/buscarTarjeta/"+id_cuenta
+      $('#tarjeta').html('')
+      $.ajax({
+        type: "post",
+        dataType: "json",
+        url: url,
+        data: {ID_CUENTA : id_cuenta},
+        success: function (tarjeta) {
+          console.log(tarjeta)
+          if (tarjeta != ''){
+            let select = $('#tarjeta')
+            let obj = tarjeta
+
+            obj.forEach((elemento, indice) => {
+              select.append(`<option value"${elemento.numero_tarjeta}">${elemento.numero_tarjeta}</option>`)
+            })
+            $('select').formSelect();
+          }else{
+            alert('Tarjeta no registrada para la cuenta Seleccionada')
+          }
+        }
       })
     }
    

@@ -31,10 +31,6 @@ class Reclamos_controller extends CI_Controller{
 	}
 
 	public function buscarPersona(){
-		
-		//header('Content-Type: application/json');
-		//include(APPPATH.'libraries/ToolkitApi/ToolkitService.php');
-		//$extension ='ib,_db2';
 		$lenguaje = 'json';
 		$formulario = $this->input->post();
 
@@ -62,7 +58,21 @@ class Reclamos_controller extends CI_Controller{
 		$cuentas = $this->Reclamos_model->buscarCuenta($parametros);
 		
 		echo json_encode($cuentas);
+	}
 
+	public function buscarTarjeta($id_cuenta){
+		//prp($id_cuenta);
+		$id_cuenta = $id_cuenta;
+		$lenguaje = "json";
+
+		$parametros = array(
+			'tabla' => 't_tarjeta',
+			'condicion' => array( 'ID_CUENTA' => $id_cuenta)
+		);
+
+		$tarjeta = $this->Reclamos_model->buscarTarjeta($parametros);
+
+		echo json_encode($tarjeta);
 	}
 
 

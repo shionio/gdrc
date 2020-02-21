@@ -34,10 +34,26 @@ class Reclamos_model extends CI_Model{
    }
 
    function buscarCuenta($parametros){
+
       //prp($parametros);
       extract($parametros);
       
-      $this->db->select('numero_cuenta');
+      $this->db->select('ID_CUENTA, numero_cuenta');
+      $this->db->from($tabla);
+      $this->db->where($condicion);
+
+      $result = $this->db->get();
+
+      $rs = $result->result_array();
+
+      return $rs;
+   }
+
+   function buscarTarjeta($parametros){
+      
+      extract($parametros);
+      
+      $this->db->select('numero_tarjeta');
       $this->db->from($tabla);
       $this->db->where($condicion);
 
