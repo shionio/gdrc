@@ -1,12 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-
 class Reclamos_controller extends CI_Controller{
 
 	public function __construct(){
 		parent::__construct();
-		//$this->validarSesion();
+		$this->validarSesion();
 		$this->load->library('session');
 	}
 
@@ -24,6 +23,29 @@ class Reclamos_controller extends CI_Controller{
 		);
 
 		$this->load->view('nuevoReclamo_v',$datos);
+	}
+
+	public function guardar() {
+		
+		$formulario = $this->input->post();
+		$datos = array(
+			'num_reclamo'		=> $formulario['num_reclamo'],
+			'fecha_reclamo'		=> $formulario['fechaReclamo'],
+			'nacionalidad'		=> $formulario['nacionalidad'],
+			'cedula'			=> $formulario['cedula'],
+			'codigoCuenta'		=> $formulario['cuentas'],
+			'tarjeta'			=> $formulario['tarjeta'],
+			'codBanco'			=> $formulario['banco'],
+			'dispositivo'		=> $formulario['dispositivo'],
+			'ubicacion'			=> $formulario['ubicacion'],
+			'motivoReclamo'		=> $formulario['motivoReclamo'],
+			'fechaTransaccion'	=> $formulario['fechaTrans'],
+			'montoSolicitado'	=> $formulario['montoSolicitado'],
+			'montoDispensado'	=> $formulario['montoDispensado'],
+			'observacion'		=> $formulario['observaciones'],
+		);
+
+		prp($datos);
 	}
 
 	public function buscarPersona(){
@@ -69,6 +91,12 @@ class Reclamos_controller extends CI_Controller{
 		$tarjeta = $this->Reclamos_model->buscarTarjeta($parametros);
 
 		echo json_encode($tarjeta);
+	}
+
+	function validarSesion(){
+		if(!$this->session->userdata('usuario')){
+			redirect(base_url().'Autenticar_controller');
+		}
 	}
 
 

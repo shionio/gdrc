@@ -5,7 +5,7 @@ class Inicio_controller extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->validarSesion();
-		//$this->load->library('session');
+		$this->load->library('session');
 	}
 
 	public function index(){
@@ -14,13 +14,19 @@ class Inicio_controller extends CI_Controller{
 
 	public function reclamos(){
 		$this->load->view('listarReclamos_v');
+	}	
+
+	function validarSesion(){
+		if(!$this->session->userdata('usuario')){
+			redirect(base_url().'Autenticar_controller');
+		}
 	}
 
-	public function administracion(){
+	/*public function administracion(){
 		$this->load->view('administrar_v');
-	}
+	}*/
 
-	public function inventario(){
+	/*public function inventario(){
 		$this->load->view('inventario_v');
 	}
 
@@ -34,11 +40,5 @@ class Inicio_controller extends CI_Controller{
 
 	public function estadisticas(){
 		$this->load->view('estadistica_v');
-	}
-
-	function validarSesion(){
-		if(!$this->session->userdata('usuario')){
-			redirect(base_url().'Autenticar_controller');
-		}
-	}
+	}*/
 }

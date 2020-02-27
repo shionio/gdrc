@@ -18,18 +18,18 @@
 	</div>
 </body>
 	<script>
-	//$(".button-collapse").sideNav();
-	function validarDatos(){
-		if($('#usuario').val().trim()=='' || ('#clave').val().trim()==''){
-			alert('usuario y/o clave invalido');
-		}else{
-			acceder();
+		//$(".button-collapse").sideNav();
+		function validarDatos(){
+			if($('#usuario').val().trim()=='' || ('#clave').val().trim()==''){
+				alert('usuario y/o clave invalido');
+			}else{
+				acceder();
+			}
 		}
-	}
 
-	function acceder(){
-		$('#formInicio').submit();
-	}
-</script>
+		function acceder(){
+			$('#formInicio').submit();
+		}
+	</script>
 
 </html>
