@@ -64,5 +64,49 @@ class Reclamos_model extends CI_Model{
       return $rs;
    }
 
+   function guardarReclamo($parametros) {
+      extract($parametros);
+
+      $sql = $this->db->insert($tabla,$datos);
+      //prp($this->db->last_query());
+
+      $rs = $this->db->affected_rows($sql);
+
+      //prp($this->db->last_query());
+
+      if ($rs > 0) {
+         return true;
+      }else{
+         return false;
+      }
+
+   }
+
+   function contadorReclamo() {
+      $this->db->select_max('num_reclamo');
+      $this->db->from('datos_reclamo');
+      $this->db->limit(1);
+
+      $id = $this->db->get();
+      $id = $id->row_array();
+     
+      return $id;
+   }
+
+   function listarReclamos() {
+      $this->db->select('num_reclamo,
+                         nombre, 
+                         apellido,
+      ');
+      $this->db->from('datos_reclamo AS r');
+      $this->db->join('t_persona AS p','p.cedula = r.cedula');
+
+      $result = $this->db->get();
+
+      $rs = $result->result_array();
+
+      return $rs;
+   }
+
 
 }

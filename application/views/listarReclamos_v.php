@@ -1,3 +1,7 @@
+<?php 
+  //prp($listarReclamos);
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +14,7 @@
 	<h1 align="center">Listado de Reclamos</h1>
 	<br><br>
 	<div align="center">
-		<a class=" light-blue darken-3 btn" href="registro">Nuevo</a>
+		<!--<a class=" light-blue darken-3 btn" href="registro">Nuevo</a>-->
 		<a class=" light-blue darken-3 btn" href='<?= base_url() ?>Inicio_controller'>Volver</a>
 	</div>
 <br>
@@ -27,29 +31,17 @@
 
           </tr>
         </thead>
-
         <tbody>
+
+      <?php foreach ($listarReclamos as $i => $reclamo) { ?>
           <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
+            <td> <?= $reclamo['num_reclamo']?> </td>
+            <td> <?= strtoupper($reclamo['nombre']) ?> </td>
+            <td> <?= strtoupper($reclamo['apellido']) ?></td>
             <td></td>
             <td></td>
           </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-            <td></td>
-            <td></td>
-          </tr>
+      <?php } ?>
         </tbody>
       </table>
 

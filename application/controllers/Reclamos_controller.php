@@ -10,42 +10,73 @@ class Reclamos_controller extends CI_Controller{
 	}
 
 	public function index(){
-		$this->load->view('listarReclamos_v');
+		$listarReclamos = $this->Reclamos_model->listarReclamos();
+		$parametros = array(
+			'mensaje' => '',
+			'listarReclamos' => $listarReclamos,
+		);
+		//prp($listarReclamos);die;
+		$this->load->view('listarReclamos_v', $parametros);
 	}
 
 	public function registro(){
 		$datos = array();
-		$listarBancos = $this->Reclamos_model->listarBancos();
+		$numReclamo = $this->Reclamos_model->contadorReclamo();
+		$numReclamo = $numReclamo['num_reclamo'];
+		$nuevoReclamo = $numReclamo + 1;
 		
+		$listarBancos = $this->Reclamos_model->listarBancos();		
 
 		$datos  = array(
 			'listarBancos' => $listarBancos,
+			'numeroReclamo' => $nuevoReclamo,
 		);
 
 		$this->load->view('nuevoReclamo_v',$datos);
 	}
 
-	public function guardar() {
-		
+	public function guardar() {		
+		$tabla = 'datos_reclamo';
 		$formulario = $this->input->post();
+		//prp($formulario['montoSolicitado']);
+		//die;
+		$montoSol = str_replace('.', '', $formulario['montoSolicitado']);
+		$montoDisp = str_replace('.', '', $formulario['montoDispensado']);
+		$montoSolicitado = str_replace(',', '.', $montoSol);
+		$montoDispensado = str_replace(',', '.', $montoDisp);
+		//prp($montoSol);
+		//die;
 		$datos = array(
 			'num_reclamo'		=> $formulario['num_reclamo'],
 			'fecha_reclamo'		=> $formulario['fechaReclamo'],
 			'nacionalidad'		=> $formulario['nacionalidad'],
 			'cedula'			=> $formulario['cedula'],
-			'codigoCuenta'		=> $formulario['cuentas'],
+			'codigo_cuenta'		=> $formulario['cuentas'],
 			'tarjeta'			=> $formulario['tarjeta'],
 			'codBanco'			=> $formulario['banco'],
 			'dispositivo'		=> $formulario['dispositivo'],
 			'ubicacion'			=> $formulario['ubicacion'],
 			'motivoReclamo'		=> $formulario['motivoReclamo'],
 			'fechaTransaccion'	=> $formulario['fechaTrans'],
-			'montoSolicitado'	=> $formulario['montoSolicitado'],
-			'montoDispensado'	=> $formulario['montoDispensado'],
+			'montoSolicitado'	=> $montoSolicitado,
+			'montoDispensado'	=> $montoDispensado,
 			'observacion'		=> $formulario['observaciones'],
 		);
 
-		prp($datos);
+		$parametros = array(
+			'tabla' => $tabla,
+			'datos' => $datos
+		);
+
+		$guardado = $this->Reclamos_model->guardarReclamo($parametros);
+
+		if ($guardado > 0) {
+			$mensaje = 'Guardado con Exito';
+			//$this->registro();
+			redirect(base_url().'Inicio_controller');
+		}else{
+			$msnsaje = 'No se a podido Guardar el Reclamo';
+		}
 	}
 
 	public function buscarPersona(){
@@ -97,6 +128,17 @@ class Reclamos_controller extends CI_Controller{
 		if(!$this->session->userdata('usuario')){
 			redirect(base_url().'Autenticar_controller');
 		}
+	}
+
+
+	public function seguimientoReclamos() {
+		$listarReclamos = $this->Reclamos_model->listarReclamos();
+		$parametros = array(
+			'mensaje' => '',
+			'listarReclamos' => $listarReclamos,
+		);
+		//prp($listarReclamos);die;
+		$this->load->view('listarReclamos_v', $parametros);
 	}
 
 

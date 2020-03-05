@@ -42,7 +42,8 @@
 				$html_navBar = "
 					<div>
 						<ul id='dropdown1' class='dropdown-content'>
-							<li><a href='".base_url()."reclamos_controller/index'>Reclamos</a></li>
+							<li><a href='".base_url()."reclamos_controller/registro'>Reclamos</a></li>
+							<li><a href='".base_url()."reclamos_controller/index'>Seguimiento Reclamos</a></li>
 							<li class='divider'></li>
 						</ul>
 						<nav class='nav'>
