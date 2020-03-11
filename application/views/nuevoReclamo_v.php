@@ -35,36 +35,34 @@
       <!-- primer cuadro fin  -->
 
       <!-- cuadro nacionalidad inicio  -->
-       <div class="col l2">
-        Nacionalidad
-       
+       <div class="col l2" id="nacionalidad">
+        Nacionalidad       
           <p>
             <label>
-              <input name="nacionalidad" type="radio" value="V" />
+              <input class="nacionalidad" name="nacionalidad" type="radio" value="V" />
               <span><b>Venezolana</b></span>
             </label>
           </p>
           <p>
             <label>
-              <input name="nacionalidad" type="radio" value="E" />
+              <input class="nacionalidad" name="nacionalidad" type="radio" value="E" />
               <span><b>Extranjero</b></span>
             </label>
           </p>
           <p>
             <label>
-              <input name="nacionalidad" type="radio" value="P" />
+              <input class="nacionalidad" name="nacionalidad" type="radio" value="P" />
               <span><b>Pasaporte</b></span>
             </label>
-          </p>
-       
+          </p>       
       </div>
       <!-- cuadro nacionalidad fin  -->
 
       <!-- cuadro datos cliente inicio  -->
-      <div class="col s6">
+      <div class="col s6" id="datos">
         <div class="col s4">
           N° Identidad
-          <input type="text" name="cedula" id="cedula" onblur="buscarCliente()">
+          <input class="cedula" type="text" name="cedula" id="cedula" onblur="buscarCliente()" readonly="true" >
         </div>
         <div class="col s8">
           Apellidos y Nombres
@@ -82,13 +80,19 @@
 
         <div class="col s7">
           Numero de Tarjeta (Cta Cte o Ahorros)
-          <select id="tarjeta" name="tarjeta"></select>          
+          <select id="tarjeta" name="tarjeta">
+            <option value="">Seleccione</option>
+          </select>          
         </div>
       </div>
-      <!-- cuadro datos cliente fin  -->
     </div>
+      <!-- cuadro datos cliente fin  -->
 
-    <div class="row">
+
+
+
+
+    <div class="row" id="datosAtms">
       <h4 align="center">  Datos del ATM'S POS</h4>
       <div class="col s6">
         Bancos
@@ -101,26 +105,30 @@
       </div>
     
       <div class="col s6">
-        Dispositivos  
-                          
-             <p>
-            <label>
-              <input name="dispositivo" id="group2" type="radio" value="atm's" />
-              <span><b>ATM'S.</b></span>
-            </label>
-         
-            <label>
-              <input name="dispositivo" id="group2" type="radio" value="pos" />
-              <span><b>POS</b></span>
-            </label>
-          </p>  
-        
+        Dispositivos                          
+        <p>
+          <label>
+            <input name="dispositivo" id="group2" type="radio" value="atm's" />
+            <span><b>ATM'S.</b></span>
+          </label>
+       
+          <label>
+            <input name="dispositivo" id="group2" type="radio" value="pos" />
+            <span><b>POS</b></span>
+          </label>
+        </p>          
       </div>
+
       <div class="col s11">
         Ubicacion del ATM'S. POS o INTERNET BANKING
-        <textarea name="ubicacion" id="textarea1" class="materialize-textarea"></textarea>
+        <textarea name="ubicacion" id="textarea1" class="materialize-textarea" readonly="true"></textarea>
       </div>
     </div>
+
+
+
+
+
 
     <div class="row">
       <h4 align="center">Datos del Reclamo</h4>
@@ -139,7 +147,7 @@
             </label>
 
             <label>
-              <input name="motivoReclamo" id="group3" type="radio" value="otros" />
+              <input  class="otros" name="motivoReclamo" id="group3" type="radio" value="otros" />
               <span><b>Otros Especifique en la Observacion</b></span>
             </label>
           </p>
@@ -159,7 +167,7 @@
       </div>
        <div class="col s11">
         Observaciones
-        <textarea id="textarea1" class="materialize-textarea" name="observaciones" id="observaciones"></textarea>
+        <textarea id="textarea2" class="materialize-textarea" name="observaciones" id="observaciones" readonly="true"></textarea>
       </div>
     </div>
   </form>
@@ -175,6 +183,7 @@
 
   <script type="text/javascript">
     $(document).ready(function(){
+      $("#datosAtms").attr('disabled','disabled')
       $(".moneda").on({
           "focus": function (event) {
               $(event.target).select();
@@ -184,6 +193,22 @@
                   return value.replace(/\D/g, "").replace(/([0-9])([0-9]{2})$/, '$1,$2').replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
               });
           }
+      })
+      //habilitar el campo para escribir el numero de cedula
+      $('.nacionalidad').on('click', function(){
+          $('.cedula').removeAttr('readonly')
+      })
+      //////////////////////////////////////////////////////
+
+
+      //habilitar el campo para escribir la ubicacion del atm o pos
+      $('#group2').on('click', function(){
+          $('#textarea1').removeAttr('readonly')
+      })
+      /////////////////////////////////////////////////////////////
+
+      $('.otros').on('click', function(){
+        $('#textarea2').removeAttr('readonly')
       })
     })
 
