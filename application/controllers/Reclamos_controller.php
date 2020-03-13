@@ -38,14 +38,10 @@ class Reclamos_controller extends CI_Controller{
 	public function guardar() {		
 		$tabla = 'datos_reclamo';
 		$formulario = $this->input->post();
-		//prp($formulario['montoSolicitado']);
-		//die;
 		$montoSol = str_replace('.', '', $formulario['montoSolicitado']);
 		$montoDisp = str_replace('.', '', $formulario['montoDispensado']);
 		$montoSolicitado = str_replace(',', '.', $montoSol);
 		$montoDispensado = str_replace(',', '.', $montoDisp);
-		//prp($montoSol);
-		//die;
 		$datos = array(
 			'num_reclamo'		=> $formulario['num_reclamo'],
 			'fecha_reclamo'		=> $formulario['fechaReclamo'],

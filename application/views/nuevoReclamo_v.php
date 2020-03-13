@@ -214,9 +214,7 @@
 
     function buscarCliente(){
       var cedula = $('#cedula').val()
-      var url = "<?=site_url()?>/reclamos_controller/buscarPersona"
-      //console.log(url)
-      
+      var url = "<?=site_url()?>/reclamos_controller/buscarPersona"      
       $.ajax({
         type: "post",
         dataType: "json",
@@ -225,7 +223,6 @@
           cedula : cedula
         },success: function (data) {
           if (data != ''){
-            //console.log(data)
             $('#nombre').val(data.apellido+' '+data.nombre)
           }else{
             console.log('fallo')
@@ -243,14 +240,10 @@
           url: url,
           data: {cedula: cedula},
           success: function (cuenta){
-            //console.log(cuenta)
             if(cuenta != ''){
-               let select = $('#cuentas')
-                //select.html('')
+               let select = $('#cuentas')               
                 let obj = cuenta
-
-                obj.forEach((elemento, indice) => {
-                  //console.log(elemento)                  
+                obj.forEach((elemento, indice) => {                 
                     select.append(`
                         <option value="${elemento.ID_CUENTA}">${elemento.numero_cuenta}</option>
                     `)
