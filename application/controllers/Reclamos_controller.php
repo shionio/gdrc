@@ -42,6 +42,8 @@ class Reclamos_controller extends CI_Controller{
 		$montoDisp = str_replace('.', '', $formulario['montoDispensado']);
 		$montoSolicitado = str_replace(',', '.', $montoSol);
 		$montoDispensado = str_replace(',', '.', $montoDisp);
+		prp($formulario['observaciones'],1);
+
 		$datos = array(
 			'num_reclamo'		=> $formulario['num_reclamo'],
 			'fecha_reclamo'		=> $formulario['fechaReclamo'],
@@ -56,8 +58,9 @@ class Reclamos_controller extends CI_Controller{
 			'fechaTransaccion'	=> $formulario['fechaTrans'],
 			'montoSolicitado'	=> $montoSolicitado,
 			'montoDispensado'	=> $montoDispensado,
-			'observacion'		=> $formulario['observaciones'],
+			'observaciones'		=> $formulario['observaciones'],
 		);
+		//prp($datos,1);
 
 		$parametros = array(
 			'tabla' => $tabla,

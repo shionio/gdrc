@@ -108,7 +108,7 @@
         Dispositivos                          
         <p>
           <label>
-            <input name="dispositivo" id="group2" type="radio" value="atm's" />
+            <input name="dispositivo" id="group2" type="radio" value="atms" />
             <span><b>ATM'S.</b></span>
           </label>
        
