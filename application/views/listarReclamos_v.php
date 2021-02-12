@@ -21,8 +21,9 @@
           Nacionalidad       
             <p>
               <label>
-                <input class="nacionalidad" name="nacionalidad" type="radio" value="N" />
+                <input class="nacionalidad" name="nacionalidad" type="radio" value="N" onclick="mostrarDiv()"/>
                 <span><b>Cedula id Nacionalidad -></b></span>
+                <input type="text" name="cedula" id="cedula" class="hide">
               </label>
             </p>
             <p>
@@ -74,6 +75,16 @@
       <!--<a class=" light-blue darken-3 btn" href="registro">Nuevo</a>-->
       <a class=" light-blue darken-3 btn" href='<?= base_url() ?>Inicio_controller'>Volver</a>
     </div>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        
+      })
+      function mostrarDiv(){
+        //alert('a')
+        $('#cedula').removeClass()
+      }
+    </script>
 
 </body>
 </html>   
