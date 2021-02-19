@@ -2,11 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reclamos_controller extends CI_Controller{
-
+	
 	public function __construct(){
 		parent::__construct();
 		$this->validarSesion();
 		$this->load->library('session');
+		$this->load->model('Reclamos_model');
+		//$this->load->database('as400',TRUE);
 	}
 
 	public function index(){
@@ -19,7 +21,7 @@ class Reclamos_controller extends CI_Controller{
 		$this->load->view('listarReclamos_v', $parametros);
 	}
 
-	public function registro(){
+	public function registro($accion='', $codigoReclamo=""){
 		$datos = array();
 		$numReclamo = $this->Reclamos_model->contadorReclamo();
 		$numReclamo = $numReclamo['num_reclamo'];
@@ -87,8 +89,8 @@ class Reclamos_controller extends CI_Controller{
 		//$ToolkitServiceObj = ToolkitService::getInstance('S65F316D','WEBPROD','WEBPROD1', $extension);
 
 		$parametros = array(
-			'tabla' => 't_persona',
-			'condicion' => array('cedula' => $cedula),
+			'tabla' => 'BAVCYFILES.CLIE',
+			'condicion' => array('CUSIDN' => $cedula),
 		);
 
 		$respuesta = $this->Reclamos_model->buscarPersona($parametros);

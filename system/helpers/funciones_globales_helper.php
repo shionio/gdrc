@@ -19,7 +19,7 @@
 						<script src='".base_url()."libs/sweetalert.min.js'</script>
 					  
 						<script src='".base_url()."libs/jq-datatable/js/dataTables.semanticui.min.js'></script>
-						<img class='center-align' src='imgs/banner.png' width='100%' height='70px' >
+						<img class='center-align' src='".base_url()."imgs/banner.png' width='100%' height='70px' >
 						<script type='text/javascript'>
 							$(document).ready(function(){								
 								$('.dropdown-trigger').dropdown();
@@ -66,7 +66,7 @@
 				    	<footer class='page-footer'>
 							<div class='footer-copyright'>
 								<div class='container'>
-									© 2016 Copyright Information
+									© 2020 Copyright Information
 									<a class='grey-text text-lighten-4 right' href='#!'>Links</a>
 								</div>
 				          	</div>         

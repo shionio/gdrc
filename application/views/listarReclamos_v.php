@@ -44,7 +44,7 @@
 
 
 
-	<div class="hide">
+	<div class="">
     
     <table class="striped">
         <thead>
@@ -65,7 +65,7 @@
             <td> <?= strtoupper($reclamo['nombre']) ?> </td>
             <td> <?= strtoupper($reclamo['apellido']) ?></td>
             <td>  </td>
-            <td> <a class="light-blue darken-3"><i class="material-icons left">edit</i></a></td>
+            <td> <a class="light-blue darken-3" href='<?php base_url() ?>registro/e/'><i class="material-icons left">edit</i></a></td>
           </tr>
       <?php } ?>
         </tbody>

@@ -3,9 +3,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Reclamos_model extends CI_Model{
 
+   private $bdpostgres, $bdas400;
+
 	function __construct(){
       parent::__construct();
       $this->load->database();
+      //$this->$bdpostgres = $this->load->databse('default', true);
+      $this->bdas400 = $this->load->database('as400',true);
+   }
+
+   function buscarPersona($parametros){      
+      extract($parametros);
+
+      /*$this->bdas400->select('CUSNA1');
+      $this->bdas400->from($tabla);
+      $this->bdas400->where($condicion);*/
+
+        $q = $this->bdas400->query('SELECT CUSIDN FROM bavcyfiles.CLIE fetch first 2 rows only');
+      foreach ($q->result_array() as $row) {
+         $cedula = trim(substr($row['CUSIDN'],1));
+         $cedula = intval($cedula);
+         prp($cedula,1);
+      }
+
+
+
+      //$rs = $this->bdas400->get();
+
+      //$result = $rs->row_array();
+
+     // return $result;
    }
 
    public function listarBancos(){
@@ -19,23 +46,8 @@ class Reclamos_model extends CI_Model{
    	return $resultado;
    }
 
-   function buscarPersona($parametros){      
-      extract($parametros);
-
-      $this->db->select('nombre, apellido');
-      $this->db->from($tabla);
-      $this->db->where($condicion);
-
-      $rs = $this->db->get();
-
-      $result = $rs->row_array();
-
-      return $result;
-   }
 
    function buscarCuenta($parametros){
-
-      //prp($parametros);
       extract($parametros);
       
       $this->db->select('ID_CUENTA, numero_cuenta');

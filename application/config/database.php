@@ -72,8 +72,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
+$active_record = TRUE;
 
-/*$db['default'] = array(
+$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'postgres',
@@ -93,9 +94,34 @@ $query_builder = TRUE;
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);*/
+);
 
-$db['default'] = array(
+
+
+$db['as400'] = array(
+	'dsn'	=> 'gdrc',
+	'hostname' => '172.18.52.22',
+	'username' => 'BAVTECN130',
+	'password' => 'AGRICOLA01',
+	'database' => 'bavcyfiles',
+	'dbdriver' => 'odbc',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE,
+	'autoinit' => FALSE
+);
+
+/*$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'BAVEXTRAC01\SQLEXPRESS',
 	'username' => 'USER_IBBAV',
@@ -115,4 +141,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-);
+);*/
