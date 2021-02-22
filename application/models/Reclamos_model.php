@@ -12,27 +12,43 @@ class Reclamos_model extends CI_Model{
       $this->bdas400 = $this->load->database('as400',true);
    }
 
-   function buscarPersona($parametros){      
-      extract($parametros);
-
-      /*$this->bdas400->select('CUSNA1');
-      $this->bdas400->from($tabla);
-      $this->bdas400->where($condicion);*/
-
-        $q = $this->bdas400->query('SELECT CUSIDN FROM bavcyfiles.CLIE fetch first 2 rows only');
-      foreach ($q->result_array() as $row) {
+   function buscarPersona($cedula){      
+      
+      $persona = $this->bdas400->query("SELECT CUSIDN, CUSNA1 FROM bavcyfiles.CLIE WHERE CUSIDN LIKE '%$cedula%'");
+      
+      foreach ($persona->result_array() as $row) {
          $cedula = trim(substr($row['CUSIDN'],1));
          $cedula = intval($cedula);
-         prp($cedula,1);
+      }
+         $datos = array(
+            'cedula'    => $cedula,
+            'nombres'   => $row['CUSNA1']
+         );
+
+      return $datos;
+   }
+
+
+
+   function buscarCuenta($cedula){      
+      $cuenta = $this->bdas400->query("SELECT CCRCRA FROM bavcyfiles.CCREF WHERE CCRCID LIKE '%$cedula%'");
+
+      foreach ($cuenta->result_array() as $row) {
+            $cuenta = $row['CCRCRA'];
       }
 
+      $cuentas = array(
+         'cuenta'    => $cuenta
+      );
 
+      return$cuentas;
+   }
 
-      //$rs = $this->bdas400->get();
-
-      //$result = $rs->row_array();
-
-     // return $result;
+   function buscarTarjeta($numero_cuenta){
+      
+      $tarjetas = $this->bdas400->query("SELECT CCRNUM FROM bavcyfiles.CCREF WHERE CCRCRA LIKE '%$numero_cuenta%'");
+      
+      return $tarjetas->result_array();
    }
 
    public function listarBancos(){
@@ -46,35 +62,6 @@ class Reclamos_model extends CI_Model{
    	return $resultado;
    }
 
-
-   function buscarCuenta($parametros){
-      extract($parametros);
-      
-      $this->db->select('ID_CUENTA, numero_cuenta');
-      $this->db->from($tabla);
-      $this->db->where($condicion);
-
-      $result = $this->db->get();
-
-      $rs = $result->result_array();
-
-      return $rs;
-   }
-
-   function buscarTarjeta($parametros){
-      
-      extract($parametros);
-      
-      $this->db->select('numero_tarjeta');
-      $this->db->from($tabla);
-      $this->db->where($condicion);
-
-      $result = $this->db->get();
-
-      $rs = $result->result_array();
-
-      return $rs;
-   }
 
    function guardarReclamo($parametros) {
       extract($parametros);

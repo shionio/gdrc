@@ -86,14 +86,8 @@ class Reclamos_controller extends CI_Controller{
 
 		$cedula = (isset($formulario['cedula'])) ? $formulario['cedula'] : "";
 
-		//$ToolkitServiceObj = ToolkitService::getInstance('S65F316D','WEBPROD','WEBPROD1', $extension);
-
-		$parametros = array(
-			'tabla' => 'BAVCYFILES.CLIE',
-			'condicion' => array('CUSIDN' => $cedula),
-		);
-
-		$respuesta = $this->Reclamos_model->buscarPersona($parametros);
+		$respuesta = $this->Reclamos_model->buscarPersona($cedula);
+		
 		echo json_encode($respuesta);
 	}
 
@@ -101,26 +95,17 @@ class Reclamos_controller extends CI_Controller{
 		$cedula = $cedula;
 		$lenguaje = "json";
 
-		$parametros = array(
-			'tabla' => 't_cuenta',
-			'condicion' => array('cedula' => $cedula)
-		);
-		$cuentas = $this->Reclamos_model->buscarCuenta($parametros);
+		$cuentas = $this->Reclamos_model->buscarCuenta($cedula); //prp($cuentas,1);
 		
 		echo json_encode($cuentas);
 	}
 
-	public function buscarTarjeta($id_cuenta){
-		//prp($id_cuenta);
-		$id_cuenta = $id_cuenta;
+	public function buscarTarjeta($numero_cuenta){
+
+		$numero_cuenta = $numero_cuenta;
 		$lenguaje = "json";
 
-		$parametros = array(
-			'tabla' => 't_tarjeta',
-			'condicion' => array( 'ID_CUENTA' => $id_cuenta)
-		);
-
-		$tarjeta = $this->Reclamos_model->buscarTarjeta($parametros);
+		$tarjeta = $this->Reclamos_model->buscarTarjeta($numero_cuenta);
 
 		echo json_encode($tarjeta);
 	}

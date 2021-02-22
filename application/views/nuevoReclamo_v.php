@@ -223,7 +223,7 @@
           cedula : cedula
         },success: function (data) {
           if (data != ''){
-            $('#nombre').val(data.apellido+' '+data.nombre)
+            $('#nombre').val(data.nombres)
           }else{
             console.log('fallo')
           }
@@ -231,7 +231,7 @@
       })
       buscarCuentas(cedula)
     }
-
+//hay que adaptar la funcion para cuando el clien te tenga registrada mas de una cuenta//*/*/*/*/*/*/*/*/*/*/*/*/*/*/
     function buscarCuentas(cedula){
       var url = "<?=site_url()?>/reclamos_controller/buscarCuentas/"+cedula      
       $.ajax({
@@ -240,14 +240,14 @@
           url: url,
           data: {cedula: cedula},
           success: function (cuenta){
+            console.log(cuenta)
             if(cuenta != ''){
-               let select = $('#cuentas')               
-                let obj = cuenta
-                obj.forEach((elemento, indice) => {                 
-                    select.append(`
-                        <option value="${elemento.ID_CUENTA}">${elemento.numero_cuenta}</option>
-                    `)
-                });
+                let select = $('#cuentas')               
+                //let obj = cuenta                               
+                select.append(`
+                    <option value="${cuenta.cuenta}">${cuenta.cuenta}</option>
+                  `)
+                
                  $('select').formSelect();
             }else{
               alert('No Hay Cuenta Registrada para la Cedula '+cedula)
@@ -255,16 +255,17 @@
           }
       })
     }
+//hay que adaptar la funcion para cuando el clien te tenga registrada mas de una cuenta//*/*/*/*/*/*/*/*/*/*/*/*/*/*
 
     function buscarTarjeta(){
-      var id_cuenta = $('#cuentas').val()
-      var url = "<?=site_url()?>/reclamos_controller/buscarTarjeta/"+id_cuenta
+      var numero_cuenta = $('#cuentas').val()
+      var url = "<?=site_url()?>/reclamos_controller/buscarTarjeta/"+numero_cuenta
       $('#tarjeta').html('')
       $.ajax({
         type: "post",
         dataType: "json",
         url: url,
-        data: {ID_CUENTA : id_cuenta},
+        data: {ID_CUENTA : numero_cuenta},
         success: function (tarjeta) {
           console.log(tarjeta)
           if (tarjeta != ''){
@@ -272,7 +273,7 @@
             let obj = tarjeta
 
             obj.forEach((elemento, indice) => {
-              select.append(`<option value"${elemento.numero_tarjeta}">${elemento.numero_tarjeta}</option>`)
+              select.append(`<option value"${elemento.CCRNUM}">${elemento.CCRNUM}</option>`)
             })
             $('select').formSelect();
           }else{
