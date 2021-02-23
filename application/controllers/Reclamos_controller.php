@@ -95,7 +95,7 @@ class Reclamos_controller extends CI_Controller{
 		$cedula = $cedula;
 		$lenguaje = "json";
 
-		$cuentas = $this->Reclamos_model->buscarCuenta($cedula); //prp($cuentas,1);
+		$cuentas = $this->Reclamos_model->buscarCuenta($cedula);
 		
 		echo json_encode($cuentas);
 	}

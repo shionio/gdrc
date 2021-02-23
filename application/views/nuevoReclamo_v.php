@@ -223,9 +223,9 @@
           cedula : cedula
         },success: function (data) {
           if (data != ''){
-            $('#nombre').val(data.nombres)
+            $('#nombre').val(data.CUSNA1)
           }else{
-            console.log('fallo')
+            alert('No existe afiliado con el numero de cedula: ' +cedula)
           }
         }
       })
@@ -243,11 +243,13 @@
             console.log(cuenta)
             if(cuenta != ''){
                 let select = $('#cuentas')               
-                //let obj = cuenta                               
-                select.append(`
-                    <option value="${cuenta.cuenta}">${cuenta.cuenta}</option>
+                let obj = cuenta 
+
+                obj.forEach((elemento, indice) =>{
+                  select.append(`
+                      <option value="${elemento.CCRCRA}">${elemento.CCRCRA}</option>
                   `)
-                
+                })                
                  $('select').formSelect();
             }else{
               alert('No Hay Cuenta Registrada para la Cedula '+cedula)

@@ -6,7 +6,7 @@
 						<meta charset='utf-8'>
 						<title>GDRC</title>
 						<style type='text/css'></style>
-						<link type='text/css' rel='stylesheet' href='css/estilos_general.css'/>
+						<link type='text/css' rel='stylesheet' href='".base_url()."css/estilos_general.css'/>
 
 						<link type='text/css' rel='stylesheet' href='".base_url()."css/material-icons/css/materialicons.css'/>
 						<link type='text/css' rel='stylesheet' href='".base_url()."libs/materialize/css/materialize.min.css'/>

@@ -16,32 +16,34 @@ class Reclamos_model extends CI_Model{
       
       $persona = $this->bdas400->query("SELECT CUSIDN, CUSNA1 FROM bavcyfiles.CLIE WHERE CUSIDN LIKE '%$cedula%'");
       
-      foreach ($persona->result_array() as $row) {
+      /*foreach ($persona->result_array() as $row) {
          $cedula = trim(substr($row['CUSIDN'],1));
          $cedula = intval($cedula);
       }
          $datos = array(
             'cedula'    => $cedula,
             'nombres'   => $row['CUSNA1']
-         );
+         );*/
 
-      return $datos;
+      return $persona->row_array();
    }
 
 
 
-   function buscarCuenta($cedula){      
+   function buscarCuenta($cedula){
+
       $cuenta = $this->bdas400->query("SELECT CCRCRA FROM bavcyfiles.CCREF WHERE CCRCID LIKE '%$cedula%'");
 
-      foreach ($cuenta->result_array() as $row) {
+      return $cuenta->result_array();
+
+      /*foreach ($cuenta->result_array() as $row) {
             $cuenta = $row['CCRCRA'];
       }
 
       $cuentas = array(
          'cuenta'    => $cuenta
-      );
+      );*/
 
-      return$cuentas;
    }
 
    function buscarTarjeta($numero_cuenta){
@@ -50,6 +52,7 @@ class Reclamos_model extends CI_Model{
       
       return $tarjetas->result_array();
    }
+
 
    public function listarBancos(){
    	$this->db->select('*');
